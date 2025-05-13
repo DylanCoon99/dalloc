@@ -4,7 +4,7 @@
 #include <stddef.h>  // For size_t
 
 // Structure representing a memory block
-typedef struct Block {
+typedef struct {
     size_t size;         // Size of the block
     struct Block* next;  // Pointer to the next free block
     int free;            // Whether the block is free (1) or allocated (0)

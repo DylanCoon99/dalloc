@@ -1,4 +1,3 @@
-// servers as the entry point for testing the allocator
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/allocator.h"

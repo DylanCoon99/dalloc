@@ -2,12 +2,32 @@
 #define ALLOCATOR_H
 
 #include <stddef.h>  // For size_t
+#include "../include/block.h"
+
+
+
+typedef enum {
+	FIRST_FIT,
+	BEST_FIT,
+	WORST_FIT
+} Alloc_Policy;
+
+
+
+// allocator needs a size, a free list pointer, an allocation policy
+
+struct Allocator {
+	size_t size;  // size of the allocator
+	Block* free_list;
+	Alloc_Policy alloc_policy;
+};
 
 
 // function declarations
 void *dalloc(size_t size);
 void free(void* ptr);
-void init_allocator(size_t size);
+void init_allocator(size_t size, Alloc_Policy alloc_policy);
 void print_memory_status();
+
 
 #endif 
