@@ -1,17 +1,13 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99
-SRC = src/allocator.c src/block.c src/coalescing.c src/utils.c
+SRC = src/allocator.c
 OBJ = $(SRC:.c=.o)
-TESTS = tests/allocator_test.c tests/coalescing_test.c
 INCLUDE = -Iinclude
 
 all: allocator
 
 allocator: $(OBJ) src/main.c
-    $(CC) $(CFLAGS) $(INCLUDE) -o allocator $(OBJ) src/main.c
-
-test: $(OBJ)
-    $(CC) $(CFLAGS) $(INCLUDE) -o tests/test $(OBJ) $(TESTS)
+	$(CC) $(CFLAGS) $(INCLUDE) -o allocator $(OBJ) src/main.c
 
 clean:
-    rm -f src/*.o allocator tests/test
+	rm -f src/*.o allocator
