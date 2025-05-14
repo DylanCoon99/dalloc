@@ -2,8 +2,13 @@
 #include <stdlib.h>
 #include "../include/allocator.h"
 
+
+
 int main() {
     printf("Initializing custom memory allocator...\n");
+
+    //init_allocator(ALLOCATOR_SIZE, POLICY);
+
 
     // Example usage of allocator functions
     void* ptr1 = dalloc(32);

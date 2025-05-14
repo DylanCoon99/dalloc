@@ -1,7 +1,10 @@
 #ifndef ALLOCATOR_H
 #define ALLOCATOR_H
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <stddef.h>  // For size_t
+#include <sys/mman.h>
 #include "../include/block.h"
 
 
@@ -26,7 +29,7 @@ struct Allocator {
 // function declarations
 void *dalloc(size_t size);
 void free(void* ptr);
-void init_allocator(size_t size, Alloc_Policy alloc_policy);
+struct Allocator init_allocator(size_t size, Alloc_Policy alloc_policy);
 void print_memory_status();
 
 

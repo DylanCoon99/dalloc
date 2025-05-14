@@ -2,6 +2,8 @@
 #define BLOCK_H
 
 #include <stddef.h>  // For size_t
+#include <stdio.h>
+#include <stdlib.h>
 
 // Structure representing a memory block
 typedef struct {
@@ -9,6 +11,7 @@ typedef struct {
     struct Block* next;  // Pointer to the next free block
     int free;            // Whether the block is free (1) or allocated (0)
 } Block;
+
 
 // Function declarations
 void split_block(Block* block, size_t size);

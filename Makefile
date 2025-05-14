@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99
-SRC = src/allocator.c
+SRC = src/main.c src/allocator.c src/block.c src/util.c
 OBJ = $(SRC:.c=.o)
 INCLUDE = -Iinclude
 
