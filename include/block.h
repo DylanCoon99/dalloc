@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 // Structure representing a memory block
 typedef struct {
     size_t size;         // Size of the block

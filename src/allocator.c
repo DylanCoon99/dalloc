@@ -1,14 +1,13 @@
-#include "../include/util.h"
 #include "../include/allocator.h"
 #include "../include/block.h"
 
 
-const size_t ALLOCATOR_SIZE = 4096;
-const Alloc_Policy POLICY = FIRST_FIT;
 
 
 struct Allocator memory_allocator;
 
+const size_t ALLOCATOR_SIZE = 4096;
+const Alloc_Policy POLICY = FIRST_FIT;
 
 /*
 Implements memory allocation strategies (first-fit, best-fit, worst-fit). It contains functions 

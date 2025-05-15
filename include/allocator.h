@@ -8,7 +8,6 @@
 #include "../include/block.h"
 
 
-
 typedef enum {
 	FIRST_FIT,
 	BEST_FIT,
@@ -16,6 +15,9 @@ typedef enum {
 } Alloc_Policy;
 
 
+
+extern const size_t ALLOCATOR_SIZE;
+extern const Alloc_Policy POLICY;
 
 // allocator needs a size, a free list pointer, an allocation policy
 
