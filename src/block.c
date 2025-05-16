@@ -10,15 +10,32 @@ tracking allocated/free blocks.
 extern struct Allocator memory_allocator;
 
 
-void split_block(Block* block, size_t size);
+void split_block(struct Block* block, size_t size) {
+
+	/*
+		Split block: first block will be n = size bytes; second block will be block.size - size - (header size)
+	*/
+	size_t total_size = block->size;
+	struct Block* next = block->next;
+
+	// create a new block object
+	
+
+	// go back and subtract the size of the header
+	struct Block new_block = {total_size - size, next, 1};
+
+	block->next = &new_block;
+	block->size = size;
+
+};
 
 
 
-Block* find_free_block(size_t size){
+struct Block* find_free_block(size_t size){
 
 	switch (memory_allocator.alloc_policy) {
 	case FIRST_FIT:
-		Block* ptr = first_fit(size);
+		struct Block* ptr = first_fit(size);
 		return ptr;
 	case BEST_FIT:
 		break;

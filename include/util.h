@@ -10,8 +10,8 @@
 
 // util function definitions
 
-Block* first_fit(size_t size);
-Block* best_fit(size_t size);
-Block* worst_fit(size_t size);
+struct Block* first_fit(size_t size);
+struct Block* best_fit(size_t size);
+struct Block* worst_fit(size_t size);
 
 #endif

@@ -25,7 +25,7 @@ struct Allocator init_allocator(size_t size, Alloc_Policy alloc_policy) {
 
 	struct Allocator allocator;
 
-	Block *base_block;
+	struct Block *base_block;
 
 	base_block = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_PRIVATE , -1, 0);
 
@@ -42,7 +42,7 @@ struct Allocator init_allocator(size_t size, Alloc_Policy alloc_policy) {
 void* dalloc(size_t size) {
 
 	// choose a free block of the correct size 
-	Block* ptr = find_free_block(size);
+	struct Block* ptr = find_free_block(size);
 
 	return ptr;
 }

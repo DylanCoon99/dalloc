@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99
 DEBUG_FLAGS = -g # Debug symbol for gdb
-SRC = src/allocator.c src/block.c src/util.c
+SRC = src/allocator.c src/block.c src/util.c tests/allocator_test.c
 OBJ = $(SRC:.c=.o)
 INCLUDE = -Iinclude
 
