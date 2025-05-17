@@ -8,7 +8,7 @@
 int main() {
     // printf("Initializing custom memory allocator...\n");
 
-    
+    test_split_block();
 
     // init_allocator(ALLOCATOR_SIZE, POLICY);
 

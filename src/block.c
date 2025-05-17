@@ -16,15 +16,19 @@ void split_block(struct Block* block, size_t size) {
 		Split block: first block will be n = size bytes; second block will be block.size - size - (header size)
 	*/
 	size_t total_size = block->size;
-	struct Block* next = block->next;
-
+	
 	// create a new block object
 	
 
 	// go back and subtract the size of the header
-	struct Block new_block = {total_size - size, next, 1};
+	struct Block* new_block = (struct Block*)((char*)block + sizeof(struct Block) + size);
 
-	block->next = &new_block;
+	new_block->size = total_size - size;
+	new_block->next = block->next;
+	new_block->free = 1;
+
+
+	block->next = new_block;
 	block->size = size;
 
 };
