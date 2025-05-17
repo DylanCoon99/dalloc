@@ -13,7 +13,7 @@ void test_split_block() {
 	assert(test_block.next->next == NULL);
 
 
-	debug_blocks(&test_block);
+	//debug_blocks(&test_block);
 
 
 

@@ -10,8 +10,6 @@ int main() {
 
     test_split_block();
 
-    // init_allocator(ALLOCATOR_SIZE, POLICY);
-
 
     // Example usage of allocator functions
     //void* ptr1 = dalloc(32);

@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c99
+CFLAGS = -Wall -Wextra -std=gnu99
 DEBUG_FLAGS = -g # Debug symbol for gdb
 SRC = src/allocator.c src/block.c src/util.c tests/allocator_test.c
 OBJ = $(SRC:.c=.o)

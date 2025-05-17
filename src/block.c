@@ -15,6 +15,7 @@ void split_block(struct Block* block, size_t size) {
 	/*
 		Split block: first block will be n = size bytes; second block will be block.size - size - (header size)
 	*/
+
 	size_t total_size = block->size;
 	
 	// create a new block object
@@ -51,4 +52,18 @@ struct Block* find_free_block(size_t size){
 
 
 
-void merge_adjacent_blocks();
+void coalesce(struct Block* head){
+
+	struct Block* current = head;
+
+	while(current && current->next) {
+		if (current->free && current->next->free) {
+			//merge
+			current->size += sizeof(struct Block) + current->next->size;
+			current->next = current->next->next;
+		} else {
+			current = current->next;
+		}
+	}
+
+}; // need to determine if coalescing will be done lazily or not

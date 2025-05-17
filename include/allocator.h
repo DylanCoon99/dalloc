@@ -22,7 +22,7 @@ extern const Alloc_Policy POLICY;
 // allocator needs a size, a free list pointer, an allocation policy
 
 struct Allocator {
-	size_t size;  // size of the allocator
+	size_t size;                // size of the allocator
 	struct Block* free_list;
 	Alloc_Policy alloc_policy;
 };

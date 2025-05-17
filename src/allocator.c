@@ -1,5 +1,6 @@
 #include "../include/allocator.h"
 #include "../include/block.h"
+#include "../include/allocator_test.h"
 
 
 
@@ -18,6 +19,7 @@ that manage memory requests, find appropriate blocks, and allocate memory.
 __attribute__((constructor)) void init_constructor() {
 	memory_allocator = init_allocator(ALLOCATOR_SIZE, POLICY);
 	printf("Initializing allocator of size %zu and policy %d\n", memory_allocator.size, memory_allocator.alloc_policy);
+	debug_blocks(memory_allocator.free_list);
 }
 
 
@@ -28,8 +30,18 @@ struct Allocator init_allocator(size_t size, Alloc_Policy alloc_policy) {
 
 	struct Block *base_block;
 
-	base_block = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_PRIVATE , -1, 0);
+	base_block = (struct Block*)mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 
+
+	if (base_block == MAP_FAILED) {
+		perror("map failed");
+		exit(EXIT_FAILURE);
+	}
+
+
+	base_block->size = size - sizeof(struct Block);
+	base_block->next = NULL;
+	base_block->free = 1;
 
 	allocator.size = size;
 	allocator.free_list = base_block;
@@ -44,9 +56,13 @@ struct Allocator init_allocator(size_t size, Alloc_Policy alloc_policy) {
 void* dalloc(size_t size) {
 
 	// choose a free block of the correct size 
-	struct Block* ptr = find_free_block(size);
+	struct Block* block = find_free_block(size);
 
-	return ptr;
+	if (!block) return NULL;
+
+	block->free = 0;
+
+	return (void*)(block->data);
 }
 
 // Frees a previously allocated memory block
