@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include "../include/allocator.h"
+#include "../include/allocator_test.h"
 
 
 void test_split_block() {
@@ -16,7 +13,6 @@ void test_split_block() {
 
 	printf("test_split_block PASSED\n");
 }
-
 
 
 

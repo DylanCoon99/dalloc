@@ -17,6 +17,7 @@ that manage memory requests, find appropriate blocks, and allocate memory.
 
 __attribute__((constructor)) void init_constructor() {
 	memory_allocator = init_allocator(ALLOCATOR_SIZE, POLICY);
+	printf("Initializing allocator of size %zu and policy %d", memory_allocator.size, memory_allocator.alloc_policy);
 }
 
 
